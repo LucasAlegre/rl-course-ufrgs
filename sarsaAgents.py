@@ -134,9 +134,11 @@ class SarsaAgent(ReinforcementAgent):
         """
         td_error = reward + self.discount*self.getQValue(nextState, self.getAction(nextState)) - self.getQValue(state, action)
         self.traces[(state,action)] += 1
-        for s, a in self.q_table.keys():
+        for s, a in self.traces.keys():
           self.q_table[(s,a)] += self.alpha * td_error * self.traces[(s,a)]
           self.traces[(s,a)] = self.discount * self.lamda * self.traces[(s,a)]
+          if self.traces[(s,a)] < 1e-12:  # otimization
+            del self.traces[(s,a)]
 
     def getPolicy(self, state):
         return self.computeActionFromQValues(state)

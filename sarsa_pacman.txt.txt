@@ -1,0 +1,15 @@
+Sarsa(lambda) Pacman
+
+Lambda=0.0 : Average Rewards over all training: -32.58
+Lambda=0.1 : Average Rewards over all training: 92.13
+Lambda=0.5 : Average Rewards over all training: 94.56
+Lambda=0.9 : Average Rewards over all training: -189.28
+
+Com todo os valores de Lambda testados o agente alcançou win rate de 100%. Porém, a média de recompensas coletadas
+durante o treinamento é fortemente impactada pelo valor de lambda.
+Como esperado, podemos verificar que um valor intermediário (0.5) obteve melhores resultados, aproveitando um pouco
+dos dois mundos (TD-learning e Monte Carlo).
+
+
+       
+    
