@@ -139,6 +139,10 @@ class SarsaAgent(ReinforcementAgent):
           self.traces[(s,a)] = self.discount * self.lamda * self.traces[(s,a)]
           if self.traces[(s,a)] < 1e-12:  # otimization
             del self.traces[(s,a)]
+        
+        # if it is a terminal state
+        if self.getLegalActions(state)[0] == 'exit':
+          self.traces.clear()
 
     def getPolicy(self, state):
         return self.computeActionFromQValues(state)
